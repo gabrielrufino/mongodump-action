@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  - push
+
+jobs:
+  testing:
+    name: Case 01
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: supercharge/mongodb-github-action@1.8.0
+        with:
+          mongodb-version: '6.0'
+          mongodb-username: root
+          mongodb-password: root
+      - uses: ./
+        with:
+          connection-string: mongodb://root:root@localhost:27017
