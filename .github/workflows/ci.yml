@@ -7,9 +7,12 @@ jobs:
   tests:
     name: Tests
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        mongo-version: [4, 5, 6]
     services:
       database:
-        image: mongo:6
+        image: mongo:${{ matrix.mongo-version }}
         ports:
           - 27017:27017
     steps:
