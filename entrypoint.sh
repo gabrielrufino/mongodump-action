@@ -1,5 +1,6 @@
 #!/bin/sh -l
 
 cd /action
-mongodump $INPUT_CONNECTION_STRING
+echo $1
+mongodump $1
 cp dump $GITHUB_WORKSPACE

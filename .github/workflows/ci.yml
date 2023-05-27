@@ -7,16 +7,16 @@ jobs:
   tests:
     name: Tests
     runs-on: ubuntu-latest
+    services:
+      database:
+        image: mongo:6
+        ports:
+          - 27017:27017
     steps:
       - uses: actions/checkout@v3
-      - uses: supercharge/mongodb-github-action@1.8.0
-        with:
-          mongodb-version: '6.0'
-          mongodb-username: root
-          mongodb-password: root
       - uses: ./
         with:
-          connection-string: mongodb://root:root@localhost:27017
+          connection-string: mongodb://database:27017
       - uses: actions/upload-artifact@v3
         with:
           name: dump
