@@ -7,6 +7,10 @@ GitHub Action for creating a binary export of a database's contents
 ```yml
 name: Backup
 
+on:
+  schedule:
+    - cron: 0 0 * * *
+
 jobs:
   backup:
     runs-on: ubuntu-latest
