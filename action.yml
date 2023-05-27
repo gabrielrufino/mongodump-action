@@ -1,5 +1,5 @@
 name: Mongodump Action
-description: Creates a binary export of a database's contents
+description: GitHub Action for creating a binary export of a database's contents
 
 inputs:
   connection-string:

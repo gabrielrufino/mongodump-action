@@ -1,5 +1,7 @@
 # Mongodump Action
 
+GitHub Action for creating a binary export of a database's contents
+
 ## Example usage
 
 ```yml
