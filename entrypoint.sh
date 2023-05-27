@@ -2,4 +2,4 @@
 
 cd /action
 mongodump $INPUT_CONNECTION_STRING
-ls
+cp dump $GITHUB_WORKSPACE

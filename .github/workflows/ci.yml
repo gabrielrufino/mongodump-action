@@ -4,8 +4,8 @@ on:
   - push
 
 jobs:
-  testing:
-    name: Case 01
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,3 +17,7 @@ jobs:
       - uses: ./
         with:
           connection-string: mongodb://root:root@localhost:27017
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dump
+          path: ${{ github.workspace }}/dump
