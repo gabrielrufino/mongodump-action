@@ -2,4 +2,5 @@
 
 cd /action
 mongodump $1
-cp -r dump $GITHUB_WORKSPACE
+mkdir $GITHUB_WORKSPACE/dump
+cp -r dump $GITHUB_WORKSPACE/dump
