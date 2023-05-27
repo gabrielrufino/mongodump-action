@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  - push
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        mongo-version: [4, 5, 6]
+    services:
+      database:
+        image: mongo:${{ matrix.mongo-version }}
+        ports:
+          - 27017:27017
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: root
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        with:
+          connection-string: mongodb://root:root@database:27017
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dump-mongo${{ matrix.mongo-version }}
+          path: ${{ github.workspace }}/dump

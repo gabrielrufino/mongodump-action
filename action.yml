@@ -1,0 +1,16 @@
+name: Mongodump Action
+description: Creates a binary export of a database's contents
+
+inputs:
+  connection-string:
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.connection-string }}
+
+branding:
+  icon: 'database'
+  color: 'green'
