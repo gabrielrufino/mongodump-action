@@ -15,11 +15,14 @@ jobs:
         image: mongo:${{ matrix.mongo-version }}
         ports:
           - 27017:27017
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: root
     steps:
       - uses: actions/checkout@v3
       - uses: ./
         with:
-          connection-string: mongodb://database:27017
+          connection-string: mongodb://root:root@database:27017
       - uses: actions/upload-artifact@v3
         with:
           name: dump-mongo${{ matrix.mongo-version }}
