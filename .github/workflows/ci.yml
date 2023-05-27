@@ -22,5 +22,5 @@ jobs:
           connection-string: mongodb://database:27017
       - uses: actions/upload-artifact@v3
         with:
-          name: dump
+          name: dump-mongo${{ matrix.mongo-version }}
           path: ${{ github.workspace }}/dump
