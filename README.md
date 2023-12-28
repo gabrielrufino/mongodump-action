@@ -15,10 +15,10 @@ jobs:
   backup:
     runs-on: ubuntu-latest
     steps:
-      - uses: gabrielrufino/mongodump-action
+      - uses: gabrielrufino/mongodump-action@v1
         with:
           connection-string: ${{ secrets.MONGO_URI }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: dump
           path: ${{ github.workspace }}/dump

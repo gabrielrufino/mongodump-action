@@ -2,6 +2,7 @@ name: CI
 
 on:
   - push
+  - workflow_dispatch
 
 jobs:
   tests:
@@ -19,11 +20,11 @@ jobs:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: root
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./
         with:
           connection-string: mongodb://root:root@database:27017
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: dump-mongo${{ matrix.mongo-version }}
           path: ${{ github.workspace }}/dump
