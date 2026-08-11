@@ -1,8 +1,5 @@
 #!/bin/sh -l
 
-apt update && apt upgrade -y
-apt install zip -y
-
 cd /action
 mongodump $1
 
