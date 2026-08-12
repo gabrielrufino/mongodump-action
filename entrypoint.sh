@@ -11,7 +11,11 @@ if [ -z "$2" ]; then
 fi
 
 cd /action || exit 1
-mongodump "$1"
+
+if ! mongodump "$1"; then
+  echo "Error: mongodump failed"
+  exit 1
+fi
 
 zip -P "$2" -r dump.zip dump
 rm -rf dump
