@@ -10,7 +10,7 @@ if [ -z "$2" ]; then
   exit 1
 fi
 
-cd /action || exit 1
+cd "${ACTION_DIR:-/action}" || exit 1
 
 if ! mongodump "$1"; then
   echo "Error: mongodump failed"
