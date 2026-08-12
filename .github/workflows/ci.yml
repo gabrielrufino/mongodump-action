@@ -22,6 +22,10 @@ jobs:
           MONGO_INITDB_ROOT_PASSWORD: root
     steps:
       - uses: actions/checkout@v4
+      - name: Run argument validation tests
+        run: |
+          chmod +x test.sh entrypoint.sh
+          ./test.sh
       - uses: ./
         with:
           connection-string: mongodb://root:root@database:27017
